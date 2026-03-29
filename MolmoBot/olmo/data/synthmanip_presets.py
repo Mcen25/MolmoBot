@@ -24,6 +24,13 @@ ACTION_SPECS: Dict[str, Dict[str, int]] = {
         "right_arm": 7,  # 7-DOF arm (delta)
         "right_gripper": 1,  # gripper (absolute, squeezed from 2D qpos)
     },
+    "G1_door_opening": {
+        "base": 3,
+        "left_arm": 7,  
+        "left_gripper": 1,
+        "right_arm": 7, 
+        "right_gripper": 1, 
+    },
     "RBY1_multitask": {
         "base": 3,  # x, y, yaw (delta)
         "left_arm": 7,  # 7-DOF arm (delta)
@@ -55,6 +62,13 @@ ACTION_SPECS: Dict[str, Dict[str, int]] = {
 ACTION_DATASET_KEYS: Dict[str, Union[str, Dict[str, str]]] = {
     "RBY1_full": "delta_actions",
     "RBY1_door_opening": {
+        "base": "joint_pos_rel",
+        "left_arm": "joint_pos_rel",
+        "left_gripper": "joint_pos",
+        "right_arm": "joint_pos_rel",
+        "right_gripper": "joint_pos",
+    },
+    "G1_door_opening": {
         "base": "joint_pos_rel",
         "left_arm": "joint_pos_rel",
         "left_gripper": "joint_pos",
@@ -100,6 +114,7 @@ CAMERA_PRESETS: Dict[str, List[str]] = {
     # RBY1
     "RBY1_full_with_head_gopro": ["wrist_camera_r", "head_camera", "wrist_camera_l"],
     "RBY1_right_arm": ["wrist_camera_r", "head_camera"],
+    "G1_full": ["wrist_camera_r", "head_camera", "wrist_camera_l"],
     
     # Franka / DROID (original presets)
     "franka_droid_exo_then_wrist": ["exo_camera_1", "wrist_camera"],
